@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: sanity-check
+spec:
+  author: riyc
+  flag: gaslightCTF{w3lc0me_2_g4sl1ghtCTF!}
+  flagFormat: gaslightCTF{...}
+  description: |
+    Welcome to gaslightCTF! Please join the discord for announcements and updates: <a href="https://discord.gg/6pxSsj4hfr">https://discord.gg/6pxSsj4hfr</a> <br>
+    And please check out our rules which may be found in the discord, or here: <a href="https://gaslightctf.cooking/rules">https://gaslightctf.cooking/rules</a>
+  difficulty: easy
+  categories:
+    - misc

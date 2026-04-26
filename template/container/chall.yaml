@@ -1,0 +1,28 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: container
+spec:
+  author: Donald Trump
+  flag: gaslightCTF{hello_nginx}
+  flagFormat: gaslightCTF{...}
+  description: |
+        Hello world! <i>italics</i> <b>bold</b>
+  difficulty: easy
+  categories:
+    - web
+  tags:
+    - template
+    - nginx
+  containers:
+    - hostname: nginx
+      image: nginx:latest
+      ports:
+        - port: 80
+          protocol: tcp
+          appProtocol: http
+          type: publicHttpRoute
+      dynamicFlag:
+        content:
+          path: /usr/share/nginx/html/flag.txt

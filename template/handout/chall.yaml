@@ -1,0 +1,19 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: handout
+spec:
+  author: Donald Trump
+  flag: gaslightCTF{can-you-read}
+  flagFormat: gaslightCTF{...}
+  description: |
+    Do you know how to download a file?
+  difficulty: easy
+  categories:
+    - forensics
+  tags:
+    - template
+  attachments:
+    - fileName: flag.txt
+      downloadUrl: /attachment/flag.txt
