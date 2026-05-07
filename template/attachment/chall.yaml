@@ -2,7 +2,7 @@ apiVersion: berg.norelect.ch/v1
 kind: Challenge
 metadata:
   namespace: berg
-  name: handout
+  name: attachment
 spec:
   author: Donald Trump
   flag: gaslightCTF{can-you-read}

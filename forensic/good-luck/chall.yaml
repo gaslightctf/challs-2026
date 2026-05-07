@@ -1,0 +1,19 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: good-luck
+spec:
+  displayName: good-luck!
+  author: riyc
+  flag: gaslightCTF{c4n_u_s33_me?_u4ya}
+  flagFormat: gaslightCTF{...}
+  description: |
+    TODO
+    Good luck!
+  difficulty: easy
+  categories:
+    - forensics
+  attachments:
+    - fileName: goodluck2.mp3
+      downloadUrl: /attachment/goodluck2.mp3
