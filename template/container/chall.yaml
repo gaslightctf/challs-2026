@@ -8,7 +8,7 @@ spec:
   flag: gaslightCTF{hello_nginx}
   flagFormat: gaslightCTF{...}
   description: |
-        Hello world! <i>italics</i> <b>bold</b>
+    Hello world! <i>italics</i> <b>bold</b>
   difficulty: easy
   categories:
     - web
