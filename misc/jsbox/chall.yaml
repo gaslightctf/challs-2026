@@ -1,0 +1,27 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: jsbox
+spec:
+  author: sportshead
+  flag: gaslightCTF{n4t1v3_c0d3_0r_n4t1v3_fl4g?}
+  flagFormat: gaslightCTF{...}
+  description: |
+    I created a black box for you to guess the flag.
+    It’s using secure comparison, so don’t bother with a side channel!
+  difficulty: easy
+  categories:
+    - misc
+  tags:
+    - nodejs
+  containers:
+    - hostname: jsbox
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        env:
+          name: FLAG

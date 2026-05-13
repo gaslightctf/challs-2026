@@ -44,14 +44,28 @@
       perSystem =
         {
           pkgs,
-          inputs',
-          self',
-          lib,
           ...
         }:
         {
           devshells.default = {
             commands = [
+              {
+                package = pkgs.skopeo;
+                category = "build";
+              }
+              {
+                package = pkgs.nix-tree;
+                category = "build";
+              }
+              {
+                name = "callPackage";
+                help = "CLI version of pkgs.callPackage";
+                category = "build";
+                command = ''
+                  ${pkgs.nix-output-monitor}/bin/nom build --impure --print-out-paths --expr \
+                    "(import ${inputs.nixpkgs} { system = \"x86_64-linux\"; }).callPackage $1 {}"
+                '';
+              }
             ];
           };
         };

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "jsbox",
+  "version": "1.0.0",
+  "main": "jsbox.js",
+  "type": "module",
+  "dependencies": {
+    "isolated-vm": "^6.1.2"
+  }
+}
