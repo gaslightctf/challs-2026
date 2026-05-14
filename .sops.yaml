@@ -1,0 +1,13 @@
+creation_rules:
+- path_regex: secrets/auth.json
+  key_groups:
+  - age:
+    # -- @sportshead
+    # v1.mbair.se
+    - age1tag1qw6cx6k7s34zt378mgwlmcy4jq4jdzgs4auuwlugyhx8td59wg96q8kyajc
+    # backup
+    - age1chacvhtf5y0vjvh7a762780t84846h8hl72wskjcr99a3qjylgxse30hdf
+
+    # https://garnix.io/api/keys/gaslightctf/challs-2026/actions/deploy-ghcr/key.public
+    - age1g5czqtrqmtu7s6jcawjxcpamkqpugtczvlzudf8c37jjdx4qtq5sl7dcgf
+

@@ -39,6 +39,8 @@
 
         inputs.treefmt.flakeModule
         ./treefmt.nix
+
+        ./nix/challengeYamls.nix
       ];
 
       perSystem =
@@ -50,9 +52,14 @@
           devshells.default = {
             commands = [
               {
-                package = pkgs.skopeo;
-                category = "build";
+                package = pkgs.sops;
+                category = "deploy";
               }
+              {
+                package = pkgs.skopeo;
+                category = "deploy";
+              }
+
               {
                 package = pkgs.nix-tree;
                 category = "build";
