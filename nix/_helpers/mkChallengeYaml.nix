@@ -6,6 +6,8 @@
 
   src,
   targetEnv ? "dev",
+
+  ...
 }:
 let
   baseName = baseNameOf src;

@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     treefmt.url = "github:numtide/treefmt-nix";
     treefmt.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +27,7 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
+    inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -40,14 +41,11 @@
         inputs.treefmt.flakeModule
         ./treefmt.nix
 
-        ./nix/challengeYamls.nix
+        (import-tree ./nix)
       ];
 
       perSystem =
-        {
-          pkgs,
-          ...
-        }:
+        { pkgs, ... }:
         {
           devshells.default = {
             commands = [

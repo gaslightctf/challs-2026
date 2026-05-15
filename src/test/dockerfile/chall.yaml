@@ -4,16 +4,17 @@ metadata:
   namespace: berg
   name: container
 spec:
-  author: Donald Trump
-  flag: gaslightCTF{hello_pwn}
+  author: sportshead
+  flag: gaslightCTF{dockerfile_test_flag}
   flagFormat: gaslightCTF{...}
   description: |
-    Hello world! <i>italics</i> <b>bold</b>
+    Infra test challenge. Connect to get the flag.
   difficulty: easy
   categories:
-    - pwn
+    - misc
   tags:
-    - template
+    - infra
+    - test
   containers:
     - hostname: chall
       image: CHALLENGE_IMAGE

@@ -5,22 +5,24 @@ metadata:
   name: container
 spec:
   author: Donald Trump
-  flag: gaslightCTF{hello_pwn}
+  flag: gaslightCTF{hello_nginx}
   flagFormat: gaslightCTF{...}
   description: |
     Hello world! <i>italics</i> <b>bold</b>
   difficulty: easy
   categories:
-    - pwn
+    - web
   tags:
     - template
+    - nginx
   containers:
-    - hostname: chall
-      image: CHALLENGE_IMAGE
+    - hostname: nginx
+      image: nginx:latest
       ports:
-        - port: 1337
+        - port: 80
           protocol: tcp
-          type: publicTlsRoute
+          appProtocol: http
+          type: publicHttpRoute
       dynamicFlag:
-        env:
-          name: FLAG
+        content:
+          path: /usr/share/nginx/html/flag.txt

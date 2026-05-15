@@ -6,17 +6,8 @@
       packages.challengeYamls =
         let
           challs =
-            builtins.readDir "${self}/src"
-            |> builtins.attrNames
-            |> builtins.concatMap (
-              category:
-              (
-                builtins.readDir "${self}/src/${category}"
-                |> builtins.attrNames
-                |> map (chall: builtins.path { path = "${self}/src/${category}/${chall}"; })
-              )
-            )
-            |> map (src: pkgs.callPackage ./helpers/mkChallengeYaml.nix { inherit src; });
+            import ./_helpers/getChallenges.nix self
+            |> map (ctx: pkgs.callPackage ./_helpers/mkChallengeYaml.nix ctx);
         in
         pkgs.symlinkJoin {
           name = "challenge-yamls";
