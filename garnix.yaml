@@ -4,6 +4,6 @@ actions:
 
 builds:
   - include:
-    - "packages.x86_64-linux.challengeYamls"
-    - "devShell.x86_64-linux.*"
-    - "devShell.aarch64-darwin.*"
+      - "packages.x86_64-linux.challengeYamls"
+      - "devShell.x86_64-linux.*"
+      - "devShell.aarch64-darwin.*"
