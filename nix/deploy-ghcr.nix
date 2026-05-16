@@ -6,7 +6,7 @@ in
   perSystem =
     { pkgs, ... }:
     {
-      apps.deployDocker.program =
+      apps.deploy-ghcr.program =
         let
           challs = import ./_helpers/getChallenges.nix self;
 
@@ -17,7 +17,7 @@ in
               { chall, src, ... }:
               # bash
               ''
-                echo "Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
+                echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
                 "${pkgs.callPackage "${src}/default.nix" { }}" | skopeo copy \
                   --insecure-policy docker-archive:/dev/stdin \
                   "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
@@ -32,7 +32,7 @@ in
               { chall, src, ... }:
               # bash
               ''
-                echo "Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
+                echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
 
                 buildah build -t "${chall}:${baseNameOf src}" "${src}"
                 skopeo copy --insecure-policy "containers-storage:${chall}:${baseNameOf src}" "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
@@ -53,12 +53,13 @@ in
             export SOPS_AGE_KEY_FILE="$GARNIX_ACTION_PRIVATE_KEY_FILE"
 
             REGISTRY_AUTH_FILE="$(mktemp)"
+            export REGISTRY_AUTH_FILE
             sops decrypt ${../secrets/auth.json} > "$REGISTRY_AUTH_FILE"
 
-            echo "Deploying ${builtins.length nixChalls |> toString} nix challs"
+            echo "==== Deploying ${builtins.length nixChalls |> toString} nix challs"
             ${deployNixChalls}
 
-            echo "Deploying ${builtins.length dockerChalls |> toString} docker challs"
+            echo "==== Deploying ${builtins.length dockerChalls |> toString} docker challs"
             ${deployDockerChalls}
           '';
 

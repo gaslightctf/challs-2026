@@ -3,7 +3,7 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.challengeYamls =
+      packages.challenge-yamls =
         let
           challs =
             import ./_helpers/getChallenges.nix self

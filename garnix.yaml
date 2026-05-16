@@ -1,9 +1,9 @@
 actions:
   - on: push
-    run: deploy-docker
+    run: deploy-ghcr
 
 builds:
   - include:
-      - "packages.x86_64-linux.challengeYamls"
+      - "packages.x86_64-linux.challenge-yamls"
       - "devShell.x86_64-linux.*"
       - "devShell.aarch64-darwin.*"
