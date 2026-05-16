@@ -63,6 +63,10 @@
                 category = "build";
               }
               {
+                package = pkgs.buildah;
+                category = "build";
+              }
+              {
                 name = "callPackage";
                 help = "CLI version of pkgs.callPackage";
                 category = "build";

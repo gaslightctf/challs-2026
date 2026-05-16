@@ -18,13 +18,25 @@ in
               # bash
               ''
                 echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
-                "${pkgs.callPackage "${src}/default.nix" { }}" | skopeo copy \
-                  --insecure-policy docker-archive:/dev/stdin \
+                challImage="$(mktemp)"
+                "${pkgs.callPackage "${src}/default.nix" { }}" > "$challImage"
+                skopeo copy \
+                  --insecure-policy "docker-archive:$challImage" \
                   "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
+                rm "$challImage"
+                unset challImage
+
+                echo "-- Done deploying ${chall}"
+                echo
               ''
             )
             |> builtins.concatStringsSep "\n";
 
+          signaturePolicy = pkgs.writeText "signature-policy.json" (
+            builtins.toJSON {
+              default = [ { type = "insecureAcceptAnything"; } ];
+            }
+          );
           dockerChalls = challs |> builtins.filter ({ src, ... }: builtins.pathExists "${src}/Dockerfile");
           deployDockerChalls =
             dockerChalls
@@ -34,8 +46,11 @@ in
               ''
                 echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
 
-                buildah build -t "${chall}:${baseNameOf src}" "${src}"
+                buildah build --signature-policy ${signaturePolicy} --storage-driver vfs -t "${chall}:${baseNameOf src}" "${src}"
                 skopeo copy --insecure-policy "containers-storage:${chall}:${baseNameOf src}" "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
+
+                echo "-- Done deploying ${chall}"
+                echo
               ''
             )
             |> builtins.concatStringsSep "\n";
@@ -59,6 +74,7 @@ in
             echo "==== Deploying ${builtins.length nixChalls |> toString} nix challs"
             ${deployNixChalls}
 
+            echo
             echo "==== Deploying ${builtins.length dockerChalls |> toString} docker challs"
             ${deployDockerChalls}
           '';

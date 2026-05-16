@@ -7,23 +7,23 @@
 let
   jsbox = callPackage ./jsbox.nix { };
 
-  # for some reason nodejs-slim_24's closure is so big that node:24-alpine is smaller
-  nodejs-alpine = dockerTools.pullImage {
-    imageName = "node";
-    imageDigest = "sha256:d1b3b4da11eefd5941e7f0b9cf17783fc99d9c6fc34884a665f40a06dbdfc94f";
-    finalImageTag = "24-alpine";
+  # for some reason nodejs-slim_24's closure is so big that distroless/nodejs is smaller
+  nodejs-image = dockerTools.pullImage {
+    imageName = "gcr.io/distroless/nodejs24-debian13";
+    imageDigest = "sha256:4841a6a2ccbc80b48cc3279e14f94ae48edc1eb5cc7feed0596d73feb57ec2c3";
+
     arch = "amd64";
-    sha256 = "sha256-73HgLm/vWl0ZfbWH02hU3/FOFPzsnf285rJFwgS6CeU=";
+    hash = "sha256-Y3eOS9xx9FKVAD8MWguiLFWcJSPYtsO17295L47pPzs=";
   };
 in
 dockerTools.streamLayeredImage {
   name = "jsbox";
 
-  fromImage = nodejs-alpine;
+  fromImage = nodejs-image;
 
   config.Cmd = [
     "${socat}/bin/socat"
     "TCP-LISTEN:1337,reuseaddr,fork"
-    "EXEC:\"node ${jsbox}/jsbox.js\",pty,rawer,echo=0"
+    "EXEC:\"/nodejs/bin/node ${jsbox}/jsbox.js\",pty,rawer,echo=0"
   ];
 }

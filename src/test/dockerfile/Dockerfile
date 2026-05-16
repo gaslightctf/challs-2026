@@ -1,9 +1,9 @@
-FROM golang:1.24-alpine AS build
+FROM docker.io/library/golang:1.24-alpine AS build
 WORKDIR /app
 COPY main.go .
 RUN go build -o chall main.go
 
-FROM alpine:3.21
+FROM gcr.io/distroless/static-debian13:nonroot
 COPY --from=build /app/chall /chall
 EXPOSE 1337
 CMD ["/chall"]
