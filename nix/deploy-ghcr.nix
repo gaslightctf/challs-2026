@@ -31,32 +31,9 @@ in
               ''
             )
             |> builtins.concatStringsSep "\n";
-
-          signaturePolicy = pkgs.writeText "signature-policy.json" (
-            builtins.toJSON {
-              default = [ { type = "insecureAcceptAnything"; } ];
-            }
-          );
-          dockerChalls = challs |> builtins.filter ({ src, ... }: builtins.pathExists "${src}/Dockerfile");
-          deployDockerChalls =
-            dockerChalls
-            |> map (
-              { chall, src, ... }:
-              # bash
-              ''
-                echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
-
-                buildah build --signature-policy ${signaturePolicy} --storage-driver vfs -t "${chall}:${baseNameOf src}" "${src}"
-                skopeo copy --insecure-policy "containers-storage:${chall}:${baseNameOf src}" "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
-
-                echo "-- Done deploying ${chall}"
-                echo
-              ''
-            )
-            |> builtins.concatStringsSep "\n";
         in
         pkgs.writeShellApplication {
-          name = "deploy-docker";
+          name = "deploy-ghcr";
 
           text = ''
             case "$GARNIX_BRANCH" in
@@ -73,16 +50,11 @@ in
 
             echo "==== Deploying ${builtins.length nixChalls |> toString} nix challs"
             ${deployNixChalls}
-
-            echo
-            echo "==== Deploying ${builtins.length dockerChalls |> toString} docker challs"
-            ${deployDockerChalls}
           '';
 
           runtimeInputs = [
             pkgs.sops
             pkgs.skopeo
-            pkgs.buildah
           ];
         };
     };

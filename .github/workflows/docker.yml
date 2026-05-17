@@ -1,0 +1,81 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - master
+      - prod
+    paths:
+      - "src/**"
+
+jobs:
+  generate-docker-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 2
+
+      - name: Generate matrix
+        id: matrix
+        run: |
+          changed=$(git diff --name-only HEAD^ HEAD -- src/)
+
+          entries="[]"
+          seen=""
+
+          while IFS= read -r file; do
+            # extract src/{category}/{chall}
+            dir=$(echo "$file" | grep -oP '^src/[^/]+/[^/]+')
+            [ -z "$dir" ] && continue
+            [ -f "$dir/Dockerfile" ] || continue
+
+            # deduplicate
+            [[ "$seen" == *"|$dir|"* ]] && continue
+            seen="$seen|$dir|"
+
+            category=$(echo "$dir" | cut -d/ -f2)
+            chall=$(echo "$dir" | cut -d/ -f3)
+            entries=$(echo "$entries" | jq -c --arg c "$category" --arg ch "$chall" '. + [{"category": $c, "chall": $ch}]')
+          done <<< "$changed"
+
+          echo "matrix=$entries" >> "$GITHUB_OUTPUT"
+
+  build-and-push:
+    needs: generate-docker-matrix
+    if: ${{ needs.generate-docker-matrix.outputs.matrix != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.generate-docker-matrix.outputs.matrix) }}
+    name: build-and-push-${{ matrix.category }}-${{ matrix.chall }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Determine tag
+        id: tag
+        run: |
+          if [ "${{ github.ref_name }}" = "prod" ]; then
+            echo "tag=prod" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=dev" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Log in to GHCR
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: src/${{ matrix.category }}/${{ matrix.chall }}
+          push: true
+          tags: ghcr.io/gaslightctf/challs-2026/${{ matrix.chall }}:${{ steps.tag.outputs.tag }}

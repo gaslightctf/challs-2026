@@ -21,6 +21,7 @@ dockerTools.streamLayeredImage {
 
   fromImage = nodejs-image;
 
+  config.Labels."org.opencontainers.image.source" = "https://github.com/gaslightctf/challs-2026";
   config.Cmd = [
     "${socat}/bin/socat"
     "TCP-LISTEN:1337,reuseaddr,fork"
