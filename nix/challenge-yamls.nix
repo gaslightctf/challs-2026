@@ -36,11 +36,15 @@
           cd challs-2026-manifests
 
           git ls-files -z | xargs -0 rm -f
-          cp -RL "${self'.packages.challenge-yamls}/" .
+          cp -L "${self'.packages.challenge-yamls}"/* .
 
           git add .
-          git commit -m "Update to $GARNIX_COMMIT_SHA ($GARNIX_BRANCH)"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Update to $GARNIX_COMMIT_SHA ($GARNIX_BRANCH)"
+            git push
+          else
+            echo "No changes to deploy"
+          fi
         '';
 
         runtimeInputs = [
