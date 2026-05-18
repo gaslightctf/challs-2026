@@ -1,5 +1,5 @@
 creation_rules:
-  - path_regex: secrets/auth.json
+  - path_regex: secrets/github.yaml
     key_groups:
       - age:
           # -- @sportshead
@@ -10,3 +10,5 @@ creation_rules:
 
           # https://garnix.io/api/keys/gaslightctf/challs-2026/actions/deploy-ghcr/key.public
           - age1g5czqtrqmtu7s6jcawjxcpamkqpugtczvlzudf8c37jjdx4qtq5sl7dcgf
+          # https://garnix.io/api/keys/gaslightctf/challs-2026/actions/deploy-challenge-yamls/key.public
+          - age1m8q7lfl6w8ggz4glueakvetx0e3qcfnfjqc23ts6k2k25gryvu3q6yf4gj

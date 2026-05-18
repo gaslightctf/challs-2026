@@ -43,10 +43,9 @@ in
             esac
 
             export SOPS_AGE_KEY_FILE="$GARNIX_ACTION_PRIVATE_KEY_FILE"
-
-            REGISTRY_AUTH_FILE="$(mktemp)"
-            export REGISTRY_AUTH_FILE
-            sops decrypt ${../secrets/auth.json} > "$REGISTRY_AUTH_FILE"
+            GH_USERNAME="$(sops decrypt ${../secrets/github.yaml} --extract '["GH_USERNAME"]')"
+            GH_PAT="$(sops decrypt ${../secrets/github.yaml} --extract '["GH_PAT"]')"
+            skopeo login ghcr.io -u "$GH_USERNAME" -p "$GH_PAT"
 
             echo "==== Deploying ${builtins.length nixChalls |> toString} nix challs"
             ${deployNixChalls}

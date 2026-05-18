@@ -1,6 +1,8 @@
 actions:
   - on: push
     run: deploy-ghcr
+  - on: push
+    run: deploy-challenge-yamls
 
 builds:
   - include:
