@@ -5,6 +5,7 @@
   bun,
 
   src,
+  chall,
   targetEnv ? "dev",
 
   ...
@@ -21,7 +22,12 @@ in
 stdenv.mkDerivation {
   name = "mkChallengeYaml-${baseName}";
 
-  inherit src targetEnv baseName;
+  inherit
+    src
+    chall
+    targetEnv
+    baseName
+    ;
 
   buildPhase = ''
     runHook preBuild
