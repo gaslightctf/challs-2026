@@ -20,6 +20,7 @@ spec:
       ports:
         - port: 1337
           protocol: tcp
+          appProtocol: tcp
           type: publicTlsRoute
       dynamicFlag:
         env:
