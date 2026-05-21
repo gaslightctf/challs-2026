@@ -75,6 +75,11 @@
                     "(import ${inputs.nixpkgs} { system = \"x86_64-linux\"; }).callPackage $1 {}"
                 '';
               }
+
+              {
+                package = pkgs.python3.withPackages (ps: with ps; [ pwntools ]);
+                category = "ctf";
+              }
             ];
           };
         };
