@@ -1,0 +1,30 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: http
+spec:
+  author: Donald Trump
+  flag: gaslightCTF{http_GET_th3_fl4g}
+  flagFormat: gaslightCTF{...}
+  description: |
+   Can you GET the flag?
+
+   Infra testing chall
+  difficulty: easy
+  categories:
+    - web
+  tags:
+    - template
+    - nginx
+  containers:
+    - hostname: nginx
+      image: nginx:latest
+      ports:
+        - port: 80
+          protocol: tcp
+          appProtocol: http
+          type: publicHttpRoute
+      dynamicFlag:
+        content:
+          path: /usr/share/nginx/html/flag.txt
