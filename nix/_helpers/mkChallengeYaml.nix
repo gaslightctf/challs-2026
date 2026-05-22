@@ -30,11 +30,7 @@ stdenv.mkDerivation {
     ;
 
   buildPhase = ''
-    runHook preBuild
-
     mkdir -p $out
     ${builder} | ${yq}/bin/yq -y '.' > $out/${baseName}.yaml
-
-    runHook postBuild
   '';
 }
