@@ -9,7 +9,6 @@ spec:
   flag: gaslightCTF{c4n_u_s33_me?_u4ya}
   flagFormat: gaslightCTF{...}
   description: |
-    TODO
     Good luck!
   difficulty: easy
   categories:

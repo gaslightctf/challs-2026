@@ -12,3 +12,14 @@ creation_rules:
           - age1g5czqtrqmtu7s6jcawjxcpamkqpugtczvlzudf8c37jjdx4qtq5sl7dcgf
           # https://garnix.io/api/keys/gaslightctf/challs-2026/actions/deploy-challenge-yamls/key.public
           - age1m8q7lfl6w8ggz4glueakvetx0e3qcfnfjqc23ts6k2k25gryvu3q6yf4gj
+  - path_regex: secrets/attachments.yaml
+    key_groups:
+      - age:
+          # -- @sportshead
+          # v1.mbair.se
+          - age1tag1qw6cx6k7s34zt378mgwlmcy4jq4jdzgs4auuwlugyhx8td59wg96q8kyajc
+          # backup
+          - age1chacvhtf5y0vjvh7a762780t84846h8hl72wskjcr99a3qjylgxse30hdf
+
+          # https://garnix.io/api/keys/gaslightctf/challs-2026/actions/deploy-attachments/key.public
+          - age1evq8g98py8ru2wnf5acd55dkfz8h06rzq4r9gsnr53sefsxezq4ssmwhek

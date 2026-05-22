@@ -3,9 +3,12 @@ actions:
     run: deploy-ghcr
   - on: push
     run: deploy-challenge-yamls
+  - on: push
+    run: deploy-attachments
 
 builds:
   - include:
       - "packages.x86_64-linux.challenge-yamls"
+      - "packages.x86_64-linux.attachments"
       - "devShell.x86_64-linux.*"
       - "devShell.aarch64-darwin.*"

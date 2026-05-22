@@ -13,10 +13,10 @@
 let
   baseName = baseNameOf src;
 
-  builder = writeScript "mkChallengeYaml.js" /* js */ ''
+  builder = writeScript "mkChallengeYaml.ts" /* ts */ ''
     #!${bun}/bin/bun
 
-    ${builtins.readFile ./mkChallengeYaml.js}
+    ${builtins.readFile ./mkChallengeYaml.ts}
   '';
 in
 stdenv.mkDerivation {

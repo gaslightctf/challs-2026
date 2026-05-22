@@ -8,7 +8,7 @@ spec:
   flag: gaslightCTF{dockerfile_test_flag}
   flagFormat: gaslightCTF{...}
   description: |
-    Infra test challenge. Connect to get the flag.
+    Infra test challenge. Connect to get the flag!
   difficulty: easy
   categories:
     - misc
