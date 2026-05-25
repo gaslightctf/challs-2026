@@ -1,0 +1,19 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: compiled-source-sheets
+spec:
+  author: sportshead
+  flag: gaslightCTF{ch3ck_0ut_lyra-horse!!_2QY90H6F}
+  flagFormat: gaslightCTF{...}
+  description: |
+    My new VM is Spectre-proof! It's also guaranteed race-condition free, and runs on every major OS <sup>[1]</sup>. Try it out!
+
+    <br><br>
+    <aside style="font-size: 0.7em">[1] that supports Chrom(e|ium)</aside>
+  difficulty: medium
+  categories:
+    - rev
+  tags:
+    - turing

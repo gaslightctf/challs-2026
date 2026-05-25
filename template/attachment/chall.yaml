@@ -14,6 +14,3 @@ spec:
     - forensics
   tags:
     - template
-  attachments:
-    - fileName: flag.txt
-      downloadUrl: /attachment/flag.txt

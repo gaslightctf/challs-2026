@@ -77,7 +77,12 @@
               }
 
               {
-                package = pkgs.python3.withPackages (ps: with ps; [ pwntools ]);
+                package = pkgs.python3.withPackages (
+                  ps: with ps; [
+                    pwntools
+                    z3-solver
+                  ]
+                );
                 category = "ctf";
               }
             ];
