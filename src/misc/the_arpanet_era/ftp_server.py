@@ -43,7 +43,7 @@ class FTPSession:
         self.type = None
         self.pasv_listener = None
 
-        # --- anti-client tracking ---
+
         self.cmd_times = deque()
         self.last_cmd_time = 0
         self.start_time = time.time()
