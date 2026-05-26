@@ -20,13 +20,13 @@ PASV_PORT_MAX = int(os.getenv("PASV_PORT_MAX", "30100"))
 
 SERVER_NAME = os.getenv("FTP_SERVER_NAME", "pyftpd/0.1")
 
-# ---------------- ANTI-CLIENT LIMITS ---------------- #
+
 MAX_CMDS_PER_WINDOW = 8
 WINDOW_SECONDS = 3
 MAX_SESSION_SECONDS = 120
 MIN_CMD_INTERVAL = 0.15  # humans ok, bots fail
 
-# ---------------------------------------------------- #
+
 
 def _split_host_port(host: str, port: int):
     parts = host.split(".")
@@ -48,7 +48,7 @@ class FTPSession:
         self.last_cmd_time = 0
         self.start_time = time.time()
 
-    # ---------------- SECURITY / ANTI-BOT ---------------- #
+
 
     def _detect_abuse(self):
         now = time.time()
@@ -77,7 +77,7 @@ class FTPSession:
 
         return False
 
-    # ---------------- IO ---------------- #
+
 
     def send(self, code, msg):
         self.h.wfile.write(f"{code} {msg}\r\n".encode())
@@ -87,7 +87,7 @@ class FTPSession:
         self.h.wfile.write(msg.encode())
         self.h.wfile.flush()
 
-    # ---------------- LOGIN ---------------- #
+
 
     def require_login(self):
         if not self.logged_in:
@@ -95,7 +95,7 @@ class FTPSession:
             return False
         return True
 
-    # ---------------- PASSIVE ---------------- #
+
 
     def close_pasv(self):
         if self.pasv_listener:
@@ -133,7 +133,7 @@ class FTPSession:
         finally:
             self.close_pasv()
 
-    # ---------------- COMMANDS ---------------- #
+
 
     def handle_list(self):
     	if not self.require_login():
@@ -222,7 +222,7 @@ class FTPHandler(socketserver.StreamRequestHandler):
 
             cmd = cmd.upper()
 
-            # ---------------- AUTH ---------------- #
+
 
             if cmd == "USER":
                 self.session.username = arg
@@ -239,7 +239,7 @@ class FTPHandler(socketserver.StreamRequestHandler):
                 self.session.send(221, "BYE")
                 break
 
-            # ---------------- CONTROL BREAKERS ---------------- #
+
 
             elif cmd == "EPSV":
                 self.session.send(502, "EPSV disabled.")
@@ -256,7 +256,7 @@ class FTPHandler(socketserver.StreamRequestHandler):
             elif cmd == "HELP":
                 self.session.send(214, "USER PASS TYPE A/I PASV LIST RETR")
 
-            # ---------------- TYPE ---------------- #
+
 
             elif cmd == "TYPE":
                 if arg.upper() in ("A", "I"):
@@ -265,13 +265,13 @@ class FTPHandler(socketserver.StreamRequestHandler):
                 else:
                     self.session.send(504, "Bad TYPE")
 
-            # ---------------- PASV ---------------- #
+
 
             elif cmd == "PASV":
                 if self.session.require_login():
                     self.session.open_pasv()
 
-            # ---------------- DATA ---------------- #
+
 
             elif cmd == "LIST":
                 self.session.handle_list()
@@ -279,7 +279,7 @@ class FTPHandler(socketserver.StreamRequestHandler):
             elif cmd == "RETR":
                 self.session.handle_retr(arg)
 
-            # ---------------- BASIC ---------------- #
+
 
             elif cmd == "NOOP":
                 self.session.send(200, "OK")
