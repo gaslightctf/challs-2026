@@ -1,0 +1,38 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+
+metadata:
+  namespace: berg
+  name: The_ARPANET_era
+
+spec:
+  author: Hollis_tang
+  flag: gaslightCTF{ftp_c0mm4nd_6ee3b619f2bae8d79f672365a21df52d}
+  flagFormat: gaslightCTF{...}
+
+  description: |
+    A good old FTP server.
+
+  difficulty: easy
+
+  categories:
+    - misc
+
+  tags:
+    - ftp
+    - networking
+    - rfc959
+
+  containers:
+    - hostname: The_ARPANET_era
+      image: CHALLENGE_IMAGE
+
+      ports:
+        - port: 2121
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+
+      dynamicFlag:
+        env:
+          name: FLAG
