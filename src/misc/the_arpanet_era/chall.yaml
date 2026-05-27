@@ -12,9 +12,11 @@ spec:
 
   displayName: The ARPANET era
   description: |
-    A good old FTP server.
-    User: Rebecca
-    Password: qwertyuiop
+    A good old FTP server. <br>
+
+    User: <code>Rebecca</code> <br>
+    Password: <code>qwertyuiop</code> <br>
+    tip: use <code>socat TCP-LISTEN:2121,fork,reuseaddr SSL:host:31337</code> to forward the port locally
 
   difficulty: easy
 
