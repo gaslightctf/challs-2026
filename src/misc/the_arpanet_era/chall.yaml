@@ -3,18 +3,19 @@ kind: Challenge
 
 metadata:
   namespace: berg
-  name: The_ARPANET_era
+  name: the-arpanet-era
 
 spec:
   author: Hollis_tang
   flag: gaslightCTF{ftp_c0mm4nd_6ee3b619f2bae8d79f672365a21df52d}
   flagFormat: gaslightCTF{...}
 
+  displayName: The ARPANET era
   description: |
     A good old FTP server.
     User: Rebecca
     Password: qwertyuiop
-    
+
   difficulty: easy
 
   categories:
@@ -26,7 +27,7 @@ spec:
     - rfc959
 
   containers:
-    - hostname: The_ARPANET_era
+    - hostname: the-arpanet-era
       image: CHALLENGE_IMAGE
 
       ports:
