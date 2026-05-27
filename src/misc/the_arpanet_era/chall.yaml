@@ -12,7 +12,9 @@ spec:
 
   description: |
     A good old FTP server.
-
+    User: Rebecca
+    Password: qwertyuiop
+    
   difficulty: easy
 
   categories:
