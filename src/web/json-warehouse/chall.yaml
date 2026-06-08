@@ -1,0 +1,25 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: json-warehouse
+spec:
+  author: Donald Trump
+  flag: gaslightCTF{p0llut3d_w4r3h0us3s_ar3nt_v3ry_s4f3_c0nd1ti0ns}
+  flagFormat: gaslightCTF{...}
+  description: |
+    Can you break into this warehouse? Don't worry, I told Claude to make no mistakes!
+  difficulty: medium
+  categories:
+    - web
+  containers:
+    - hostname: nginx
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 3000
+          protocol: tcp
+          appProtocol: http
+          type: publicHttpRoute
+      dynamicFlag:
+        env:
+          name: FLAG

@@ -1,0 +1,24 @@
+{
+	"name": "json-warehouse",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "NODE_ENV=development bun --watch src/index.tsx",
+		"build": "NODE_ENV=production bun build src/index.tsx --target bun --outdir ./dist",
+		"start": "NODE_ENV=production bun dist/index.js",
+		"compile": "NODE_ENV=production bun build --compile --minify --bytecode src/index.tsx --outfile json-warehouse"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@elysiajs/html": "^1.4.2",
+		"@kitajs/html": "^4.2.13",
+		"elysia": "^1.4.16",
+		"zod": "^4.1.13"
+	}
+}
