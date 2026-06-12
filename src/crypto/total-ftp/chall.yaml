@@ -1,0 +1,16 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: total-ftp
+spec:
+  author: William Tu
+  flag: gaslightCTF{gu3s5_y0u_n33d_l0ng_sl33v35_ev3n_in_5umm3r?}
+  flagFormat: gaslightCTF{...}
+  description: |
+    TODO
+  difficulty: hard
+  categories:
+    - crypto
+  tags:
+    - rsa

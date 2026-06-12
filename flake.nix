@@ -81,6 +81,10 @@
                   ps: with ps; [
                     pwntools
                     z3-solver
+                    pycryptodome
+
+                    sympy
+                    numpy
                   ]
                 );
                 category = "ctf";
