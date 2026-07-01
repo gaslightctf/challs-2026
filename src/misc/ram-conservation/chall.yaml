@@ -1,0 +1,28 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: ram-conservation
+spec:
+  author: sportshead
+  flag: gaslightCTF{b3w4r3_th3_r4mp0calys3}
+  flagFormat: gaslightCTF{...}
+  description: |
+    RAM prices are going up due to AI, this shell reduces memory use by limiting your inputs. Find the flag!
+  difficulty: easy
+  categories:
+    - pwn
+  tags:
+    - bash
+  containers:
+    - hostname: chall
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        content:
+          path: /etc-flag-might-be-in-here/is-this-the-flag-{entropy}
+          mode: 0o444
