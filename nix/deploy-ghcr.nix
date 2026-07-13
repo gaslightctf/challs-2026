@@ -21,7 +21,9 @@ in
                 challImage="$(mktemp)"
                 "${pkgs.callPackage "${src}/default.nix" { }}" > "$challImage"
                 skopeo copy \
-                  --insecure-policy "docker-archive:$challImage" \
+                  --insecure-policy \
+                  --authfile "$AUTH_FILE" \
+                  "docker-archive:$challImage" \
                   "docker://${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
                 rm "$challImage"
                 unset challImage
@@ -45,10 +47,13 @@ in
             export SOPS_AGE_KEY="$DEPLOY_GHCR_AGE_KEY"
             GH_USERNAME="$(sops decrypt ${../secrets/github.yaml} --extract '["GH_USERNAME"]')"
             GH_PAT="$(sops decrypt ${../secrets/github.yaml} --extract '["GH_PAT"]')"
-            skopeo login ghcr.io -u "$GH_USERNAME" -p "$GH_PAT"
+            AUTH_FILE="$(mktemp -u)"
+            skopeo login ghcr.io --authfile "$AUTH_FILE" -u "$GH_USERNAME" -p "$GH_PAT"
 
             echo "==== Deploying ${builtins.length nixChalls |> toString} nix challs"
             ${deployNixChalls}
+
+            rm "$AUTH_FILE"
           '';
 
           runtimeInputs = [
