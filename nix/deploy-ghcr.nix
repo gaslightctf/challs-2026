@@ -54,6 +54,7 @@ in
           runtimeInputs = [
             pkgs.sops
             pkgs.skopeo
+            pkgs.toybox
           ];
         };
     };

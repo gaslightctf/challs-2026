@@ -49,6 +49,7 @@
 
         runtimeInputs = [
           pkgs.sops
+          pkgs.toybox
         ];
       };
     };
