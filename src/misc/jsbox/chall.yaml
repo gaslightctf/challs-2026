@@ -13,8 +13,6 @@ spec:
   difficulty: easy
   categories:
     - misc
-  tags:
-    - nodejs
   containers:
     - hostname: jsbox
       image: CHALLENGE_IMAGE

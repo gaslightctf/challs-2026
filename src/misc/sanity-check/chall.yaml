@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: sanity-check
 spec:
+  displayName: Sanity Check
   author: riyc
   flag: gaslightCTF{w3lc0me_2_g4sl1ghtCTF!}
   flagFormat: gaslightCTF{...}

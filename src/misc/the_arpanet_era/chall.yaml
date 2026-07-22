@@ -23,11 +23,6 @@ spec:
   categories:
     - misc
 
-  tags:
-    - ftp
-    - networking
-    - rfc959
-
   containers:
     - hostname: the-arpanet-era
       image: CHALLENGE_IMAGE

@@ -12,5 +12,3 @@ spec:
   difficulty: hard
   categories:
     - crypto
-  tags:
-    - rsa

@@ -12,9 +12,6 @@ spec:
   difficulty: easy
   categories:
     - misc
-  tags:
-    - infra
-    - test
   containers:
     - hostname: chall
       image: CHALLENGE_IMAGE

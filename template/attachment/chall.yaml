@@ -12,5 +12,3 @@ spec:
   difficulty: easy
   categories:
     - forensics
-  tags:
-    - template

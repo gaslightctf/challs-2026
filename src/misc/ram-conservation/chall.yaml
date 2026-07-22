@@ -12,8 +12,6 @@ spec:
   difficulty: easy
   categories:
     - pwn
-  tags:
-    - bash
   containers:
     - hostname: chall
       image: CHALLENGE_IMAGE

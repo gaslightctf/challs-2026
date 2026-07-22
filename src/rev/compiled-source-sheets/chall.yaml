@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: compiled-source-sheets
 spec:
+  displayName: Compiled Source Sheets
   author: sportshead
   flag: gaslightCTF{ch3ck_0ut_lyra-horse!!_2QY90H6F}
   flagFormat: gaslightCTF{...}
@@ -15,5 +16,3 @@ spec:
   difficulty: medium
   categories:
     - rev
-  tags:
-    - turing
