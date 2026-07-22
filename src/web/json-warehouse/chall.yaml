@@ -4,7 +4,7 @@ metadata:
   namespace: berg
   name: json-warehouse
 spec:
-  author: Donald Trump
+  author: sportshead
   flag: gaslightCTF{p0llut3d_w4r3h0us3s_ar3nt_v3ry_s4f3_c0nd1ti0ns}
   flagFormat: gaslightCTF{...}
   description: |
@@ -13,7 +13,7 @@ spec:
   categories:
     - web
   containers:
-    - hostname: nginx
+    - hostname: warehouse
       image: CHALLENGE_IMAGE
       ports:
         - port: 3000
