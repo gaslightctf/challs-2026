@@ -143,6 +143,8 @@ We know $i = 1$ (from q2). Because $f_(2p)(x)$ represents $2p$ as a polynomial, 
 So we can factor $f_(4n)$, and halve the resulting values to recover $p$ and $q$.
 
 == article appendix: $n_1$
+note 2026-07-23: this is incomplete and not entirely sure if this is even correct
+
 We can utilise a similar method to solve for $n_1$. $p$ and $q$ are generated as follows:
 ```python
 import random
@@ -255,3 +257,50 @@ x=dab01506 bit_length=32
 
 Perfect! Every fourth limb is 32-bit, and we have an 8-bit (in this case)
 least-significant limb.
+
+== Responses to appendix
+\
+*4. If this polynomial factorization technique worked for every $p$ and $q$, then RSA would be broken. Why is the short-sleeve property important, and why doesn't this factorization method work in general? What are the limits?*
+
+\
+
+Note that integer polynomial factorization (that is, factorization over $ZZ$) depends on two factors (no pun intended): coefficient size and degree of polynomial.
+
+For short-sleeve RSA moduli, we exploited the fact that the largely uncovered limbs gave rise to small coefficients, using our suitable value of limb size. Hence, we can construct a polynomial representation of the integer with relatively small coefficients and degree so that polynomial factorization is "fast". Indeed, the short-sleeve property is important.
+
+For uncorrupted RSA moduli, we do not have such small coefficient property. As an _a priori_ bound for estimating the complexity of factorization algorithms, we can consider the Landau-Mignotte bound, plagarized from #link("https://en.wikipedia.org/wiki/Landau–Mignotte_bound")[_Landau-Mignotte bound_] by Wikipedia:
+
+Let $f(x), h(x) in ZZ[x]$, where $h(x)$ divides $f(x)$. Denote the sum of the absolute values of the coefficients in $h(x)$ and $f(x)$ as $||h||_1$ and $||f||_1$, respectively. We then have
+
+$
+  ||h||_1 <= 2^n||f||_1
+$
+
+where $n = deg f(x)$.
+
+Thus, if $||f||_1$ is large, then we have a large bound for $||h||_1$, which means we have a large coefficient space to traverse through. As far as I know, most algorithms that factorize univariate integer polynomials require a specified bound for the coefficient of the factors (link: #link("https://en.wikipedia.org/wiki/Factorization_of_polynomials#Factoring_over_finite_fields")[_Factoring univariate polynomials over the integers_]), so the complexity of factorization is dependent on this bound.
+
+We use the Landau-Mignotte bound to informally justify why uncorrupted RSA moduli always produce a large bound, hence a "slow" factorization, with two cases below:
+
++ We choose a large limb for a low degree polynomial. Then the coefficients of $f_n (x)$ are very large, so $||f||_1$ is large, which yields a large coefficient space for its factors.
++ We choose a small limb for small coefficients. Then the degree of $f_n (x)$ is large, so the $2^n$ factor in the inequality dominates, which yields a large coefficient space for its factors.
+
+In both cases, we have a large coefficient space for the factors of $f_n (x)$, hence why factorization is infeasible for uncorrupted RSA.
+
+\
+
+*5. The short-sleeve property allows us to construct the product $f_(2^i p)(x) *f_(2^j q)(x)$, but unless $f_(2^i p)(x)$ and $f_(2^j q)(x)$ are irreducible, factorization may split this into more than two terms. Prove that there is always an efficient way to recover $p$ and $q$ from the polynomial factorization.*
+
+\
+
+Note that `short-sleeve_rsa2.py` gives code on how to do this. We describe the process mathematically below:
+
+Suppose $f_(2^i p)(x) thin f_(2^i q)(x)$ factorizes into $g_1(x) thin dots.h.c thin g_k (x)$ for integer $k >= 2$. Note that for the chosen base $B = 2^32$, we have
+
+$
+  f_(2^i p)(B) thin f_(2^i q)(B) = g_1(B) thin dots.h.c thin g_k (B) = 2^(i+j)p q
+$
+
+Thus, exactly two of the factors $g_i (B)$ contains $p$ or $q$, while other factors are powers of 2. Therefore, we can traverse through all the factors after factorization and check if the factor is of the form $2^k$ (a power of 2) or $2^k p$ for prime $p$, which is efficient. Then we can extract $p$ and $q$ easily.
+
+#align(right)[$square$]
