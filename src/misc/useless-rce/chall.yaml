@@ -1,0 +1,28 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: useless-rce
+spec:
+  author: sportshead
+  flag: gaslightCTF{uns4f3_p3rf0rm_burr1t0_c0n5umpt10n}
+  flagFormat: gaslightCTF{...}
+  description: |
+    A purely useless RCE in a
+    <a target="_blank" href="https://www.youtube.com/watch?v=iSmkqocn0oQ&t=194s">functionally useless</a>
+    pure functional programming language.
+  difficulty: easy
+  categories:
+    - misc
+  containers:
+    - hostname: chall
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        content:
+          path: /flag
+          mode: 0o444

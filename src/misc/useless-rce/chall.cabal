@@ -1,0 +1,13 @@
+cabal-version:  3.0
+
+name:           chall
+version:        0.0
+author:         sportshead
+build-type:     Simple
+
+executable chall
+  build-depends:  base
+                , hint
+  main-is:        jail.hs
+  hs-source-dirs: src
+  ghc-options: -Wall
