@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, inputs, ... }:
 let
   CONTAINER_REGISTRY = "ghcr.io/gaslightctf/challs-2026";
 in
@@ -27,7 +27,8 @@ in
                   if builtins.pathExists "${src}/default.nix" then
                     pkgs.callPackage "${src}/default.nix" { }
                   else
-                    (builtins.getFlake src).packages.${system}.default
+                    # TODO: change to builtins.getFlake come nix 2.35
+                    (inputs.getFlake src).packages.${system}.default
                 }" > "$challImage"
                 skopeo copy \
                   --insecure-policy \

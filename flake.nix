@@ -11,6 +11,8 @@
 
     devshell.url = "github:numtide/devshell";
     devshell.inputs.nixpkgs.follows = "nixpkgs";
+
+    getFlake.url = "github:ursi/get-flake";
   };
 
   nixConfig = {
