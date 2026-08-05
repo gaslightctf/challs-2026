@@ -4,13 +4,17 @@ let
 in
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, system, ... }:
     {
       packages.deploy-ghcr =
         let
           challs = import ./_helpers/getChallenges.nix self;
 
-          nixChalls = challs |> builtins.filter ({ src, ... }: builtins.pathExists "${src}/default.nix");
+          nixChalls =
+            challs
+            |> builtins.filter (
+              { src, ... }: builtins.pathExists "${src}/default.nix" || builtins.pathExists "${src}/flake.nix"
+            );
           deployNixChalls =
             nixChalls
             |> map (
@@ -19,7 +23,12 @@ in
               ''
                 echo "== Deploying ${chall} to ${CONTAINER_REGISTRY}/${chall}:$TARGET_ENV"
                 challImage="$(mktemp)"
-                "${pkgs.callPackage "${src}/default.nix" { }}" > "$challImage"
+                "${
+                  if builtins.pathExists "${src}/default.nix" then
+                    pkgs.callPackage "${src}/default.nix" { }
+                  else
+                    (builtins.getFlake src).packages.${system}.default
+                }" > "$challImage"
                 skopeo copy \
                   --insecure-policy \
                   --authfile "$AUTH_FILE" \

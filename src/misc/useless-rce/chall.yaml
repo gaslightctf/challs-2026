@@ -11,7 +11,7 @@ spec:
     A purely useless RCE in a
     <a target="_blank" href="https://www.youtube.com/watch?v=iSmkqocn0oQ&t=194s">functionally useless</a>
     pure functional programming language.
-  difficulty: easy
+  difficulty: medium
   categories:
     - misc
   containers:

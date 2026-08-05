@@ -13,6 +13,6 @@ spec:
 
     <br>
     <aside style="font-size: 0.7em">[1] that supports Chrom(e|ium)</aside>
-  difficulty: medium
+  difficulty: hard
   categories:
     - rev
