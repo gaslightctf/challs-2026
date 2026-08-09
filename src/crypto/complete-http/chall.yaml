@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: complete-http
+spec:
+  displayName: CompleteHTTP
+  author: William Tu / sportshead
+  flag: gaslightCTF{gu3s5_y0u_n33d_l0ng_sl33v35_ev3n_in_5umm3r?}
+  flagFormat: gaslightCTF{...}
+  description: |
+    How do you make RSA fashionable?
+  difficulty: hard
+  categories:
+    - crypto

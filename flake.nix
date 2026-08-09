@@ -47,7 +47,7 @@
       ];
 
       perSystem =
-        { pkgs, ... }:
+        { pkgs, system, ... }:
         {
           devshells.default = {
             commands = [
@@ -77,6 +77,15 @@
                     "(import ${inputs.nixpkgs} { system = \"x86_64-linux\"; }).callPackage $1 {}"
                 '';
               }
+              {
+                name = "callPackage-shell";
+                help = "evaluate a nix-shell on a callPackage";
+                category = "build";
+                command = ''
+                  nix-shell -E \
+                    "(import ${inputs.nixpkgs} { system = \"${system}\"; }).callPackage $1 {}"
+                '';
+              }
 
               {
                 package = pkgs.python3.withPackages (
@@ -90,6 +99,10 @@
                   ]
                 );
                 category = "ctf";
+              }
+              {
+                package = pkgs.typst;
+                category = "doc";
               }
             ];
           };
