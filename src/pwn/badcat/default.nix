@@ -44,9 +44,9 @@ dockerTools.streamLayeredImage {
     # sh
     ''
       ${dockerTools.shadowSetup}
-      useradd -U -m -s /bin/bash gaslighter
-      chpasswd -c SHA512 <<<"gaslighter:b4788c115ea4eb42"
-      echo '$ badcat README.txt' > /home/gaslighter/README.txt
+      useradd -U -m -s /bin/bash badcat
+      chpasswd -c SHA512 <<<"badcat:b4788c115ea4eb42"
+      echo '$ badcat README.txt' > /home/badcat/README.txt
 
       mkdir -p /etc/ssh
       echo "UsePAM no" > /etc/ssh/sshd_config

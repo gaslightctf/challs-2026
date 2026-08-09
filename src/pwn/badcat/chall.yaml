@@ -10,7 +10,7 @@ spec:
   description: |
     you've seen [batcat](https://github.com/sharkdp/bat), are you ready for badcat? <br>
 
-    login with <code>gaslighter:b4788c115ea4eb42</code>
+    login with <code>badcat:b4788c115ea4eb42</code>
   difficulty: easy
   categories:
     - pwn
