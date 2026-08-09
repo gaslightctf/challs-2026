@@ -1,0 +1,28 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: badcat
+spec:
+  author: sportshead
+  flag: gaslightCTF{f3l1n3_d3scr1pt0r_m30www}
+  flagFormat: gaslightCTF{...}
+  description: |
+    you've seen [batcat](https://github.com/sharkdp/bat), are you ready for badcat? <br>
+
+    login with <code>gaslighter:b4788c115ea4eb42</code>
+  difficulty: easy
+  categories:
+    - pwn
+  containers:
+    - hostname: badcat
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 22
+          protocol: tcp
+          appProtocol: ssh
+          type: publicTlsRoute
+      dynamicFlag:
+        content:
+          path: /flag
+          mode: 0o400
