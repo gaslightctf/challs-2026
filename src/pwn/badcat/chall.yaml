@@ -8,7 +8,7 @@ spec:
   flag: gaslightCTF{f3l1n3_d3scr1pt0r_m30www}
   flagFormat: gaslightCTF{...}
   description: |
-    you've seen [batcat](https://github.com/sharkdp/bat), are you ready for badcat? <br>
+    you've seen <a href="https://github.com/sharkdp/bat" target="_blank">batcat</a>, are you ready for badcat? <br>
 
     login with <code>badcat:b4788c115ea4eb42</code>
   difficulty: easy
