@@ -1,0 +1,15 @@
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/bin/Debug/net10.0/complete-http
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/bin/Debug/net10.0/complete-http.deps.json
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/bin/Debug/net10.0/complete-http.runtimeconfig.json
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/bin/Debug/net10.0/complete-http.dll
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/bin/Debug/net10.0/complete-http.pdb
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.AssemblyInfoInputs.cache
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.AssemblyInfo.cs
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.csproj.CoreCompileInputs.cache
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.sourcelink.json
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.dll
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/refint/complete-http.dll
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.pdb
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/complete-http.genruntimeconfig.cache
+/Users/zng/projects/gaslightctf/challs-2026/src/crypto/complete-http/obj/Debug/net10.0/ref/complete-http.dll

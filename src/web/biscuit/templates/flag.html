@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}STAFF ROOM &middot; THE JAFFA CAKE
+ZONE{% endblock %} {% block content %}
+<h2>~ WEBMASTER STAFF ROOM ~</h2>
+{% if flag %}
+<p>Welcome back, webmaster. The secret recipe:</p>
+<p class="flag">{{ flag }}</p>
+<p class="tiny">do NOT share this with the biscuit lobby &#128683;</p>
+{% else %}
+<p class="warn">&#128274; ACCESS DENIED &#128274;</p>
+<p>
+  Your biscuit does not carry the <code>role("admin")</code> fact. Nice try
+  though.
+</p>
+<p class="tiny"><a href="{{ url_for('index') }}">go back to voting</a></p>
+{% endif %} {% endblock %}

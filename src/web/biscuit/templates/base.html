@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}THE JAFFA CAKE ZONE{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='retro.css') }}" />
+  </head>
+  <body>
+    <center>
+      <table class="frame" cellpadding="12" cellspacing="0">
+        <tr>
+          <td>
+            <h1 class="rainbow">~*~ THE JAFFA CAKE ZONE ~*~</h1>
+            <marquee scrollamount="6">
+              &#127851; Shout out to the nibblers, the top downers, the insider outers, the let-it-melt-in-the-mouthers, the all-the-way-arounders, the inside excavators and the gone in one biters. &#127851;
+            </marquee>
+            <hr />
+            <div class="nav">
+              <a href="{{ url_for('index') }}">[ HOME ]</a>
+              {% if admin %}
+              <a href="{{ url_for('flag') }}">[ STAFF ROOM ]</a>
+              {% endif %} {% if user %}
+              <span class="who">logged in as <b>{{ user }}</b></span>
+              <a href="{{ url_for('logout') }}">[ LOG OUT ]</a>
+              {% else %}
+              <a href="{{ url_for('login') }}">[ LOG IN ]</a>
+              <a href="{{ url_for('signup') }}">[ SIGN UP ]</a>
+              {% endif %}
+            </div>
+            <hr />
+            {% block content %}{% endblock %}
+            <hr />
+            <p class="tiny">
+              &copy; 1998 webmaster@jaffa.zone &middot; this page is under
+              construction &#128679; &middot; powered by biscuits &#127850;
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>

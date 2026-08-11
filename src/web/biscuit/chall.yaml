@@ -1,0 +1,25 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: biscuit
+spec:
+  author: sportshead
+  flag: gaslightCTF{d3f1nit3ly_a_cak3_f0r_l3g4l_r34s0n5}
+  flagFormat: gaslightCTF{...}
+  description: |
+    Hello world! <i>italics</i> <b>bold</b>
+  difficulty: easy
+  categories:
+    - web
+  containers:
+    - hostname: biscuit
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 8080
+          protocol: tcp
+          appProtocol: http
+          type: publicHttpRoute
+      dynamicFlag:
+        env:
+          name: FLAG

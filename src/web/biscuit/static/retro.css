@@ -1,0 +1,133 @@
+body {
+  background: #000080;
+  color: #ffffff;
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive, sans-serif;
+  margin: 20px;
+  position: relative;
+}
+
+/* offset (brick) tiled jaffa wallpaper, toned down so it isn't an eyesore */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/static/jaffa-tile.png") repeat;
+  background-size: 92px 80px;
+  filter: blur(1.5px) contrast(0.55) brightness(1.05);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.frame {
+  background: #ffcc66;
+  color: #401a00;
+  border: 6px ridge #ff9900;
+  max-width: 760px;
+}
+
+h1.rainbow {
+  font-size: 34px;
+  margin: 0;
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffee00, #ff6600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  color: #cc0000;
+}
+
+a {
+  color: #0000cc;
+}
+
+a:visited {
+  color: #660099;
+}
+
+.nav a {
+  margin: 0 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav .who {
+  margin: 0 6px;
+}
+
+hr {
+  border: 0;
+  border-top: 3px double #cc6600;
+}
+
+.bigbutton {
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 24px 40px;
+  border: 5px outset #cc6600;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.bigbutton:active {
+  border-style: inset;
+}
+
+.bigbutton.small {
+  font-size: 16px;
+  padding: 8px 18px;
+  background: #ffdd88;
+}
+
+button.cake,
+th.cake {
+  background: #ff9933;
+  color: #401a00;
+}
+
+button.biscuit,
+th.biscuit {
+  background: #7b3f00;
+  color: #ffe0b2;
+}
+
+table.tally {
+  background: #fff3d6;
+  border-color: #cc6600;
+  min-width: 460px;
+}
+
+table.tally td {
+  vertical-align: top;
+  color: #401a00;
+}
+
+.flag {
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  font-weight: bold;
+  background: #401a00;
+  color: #00ff66;
+  padding: 12px 20px;
+  border: 4px inset #cc6600;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.warn {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+.tiny {
+  font-size: 12px;
+}
+
+input {
+  font-family: inherit;
+  border: 2px inset #cc6600;
+  background: #fff8e7;
+}

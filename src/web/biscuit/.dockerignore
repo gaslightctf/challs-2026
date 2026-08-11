@@ -1,0 +1,6 @@
+.venv
+__pycache__
+*.pyc
+solution
+chall.yaml
+README.md

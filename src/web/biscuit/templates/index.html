@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block content %}
+<h2>IS IT A CAKE OR A BISCUIT???</h2>
+<p>
+  The eternal question. {{ users }} netizens have joined the debate. Cast your
+  vote below and let history judge you.
+</p>
+
+{% if user %}
+<form method="post" action="{{ url_for('vote') }}">
+  <table cellpadding="8">
+    <tr>
+      <td>
+        <button class="bigbutton cake" name="choice" value="cake" type="submit">
+          &#127874;<br />CAKE
+        </button>
+      </td>
+      <td>
+        <button
+          class="bigbutton biscuit"
+          name="choice"
+          value="biscuit"
+          type="submit"
+        >
+          &#127850;<br />BISCUIT
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+<p class="tiny">
+  {% if votes.get(user) %} you voted <b>{{ votes[user]|upper }}</b> &mdash; press
+  the other one to switch sides, traitor. {% else %} you have not voted yet!!
+  {% endif %}
+</p>
+{% else %}
+<p class="warn">
+  &#9888; you must <a href="{{ url_for('login') }}">log in</a> or
+  <a href="{{ url_for('signup') }}">sign up</a> to vote &#9888;
+</p>
+{% endif %}
+
+<hr />
+<h3>~ THE TALLY ~</h3>
+<table class="tally" cellpadding="10" cellspacing="0" border="1">
+  <tr>
+    <th class="cake">&#127874; TEAM CAKE ({{ tally.cake|length }})</th>
+    <th class="biscuit">&#127850; TEAM BISCUIT ({{ tally.biscuit|length }})</th>
+  </tr>
+  <tr>
+    <td>
+      {% for voter in tally.cake %} {{ voter }}<br />
+      {% else %}
+      <i>nobody... yet</i>
+      {% endfor %}
+    </td>
+    <td>
+      {% for voter in tally.biscuit %} {{ voter }}<br />
+      {% else %}
+      <i>nobody... yet</i>
+      {% endfor %}
+    </td>
+  </tr>
+</table>
+{% endblock %}

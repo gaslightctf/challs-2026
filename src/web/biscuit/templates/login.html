@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}LOG IN &middot; THE JAFFA CAKE ZONE{%
+endblock %} {% block content %}
+<h2>~ LOG IN ~</h2>
+{% if error %}<p class="warn">{{ error }}</p>{% endif %}
+<form method="post">
+  <table cellpadding="4">
+    <tr>
+      <td>username:</td>
+      <td><input name="username" autofocus /></td>
+    </tr>
+    <tr>
+      <td>password:</td>
+      <td><input name="password" type="password" /></td>
+    </tr>
+  </table>
+  <button class="bigbutton small" type="submit">ENTER THE ZONE</button>
+</form>
+<p class="tiny">
+  no account? <a href="{{ url_for('signup') }}">sign up here</a>
+</p>
+{% endblock %}
