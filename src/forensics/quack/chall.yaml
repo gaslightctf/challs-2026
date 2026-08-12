@@ -1,0 +1,16 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: quack
+spec:
+  author: sportshead
+  flag: gaslightCTF{52.196,0.115}
+  flagFormat: gaslightCTF{1.234,56.789}
+  description: |
+    Flag format: <code>gaslightCTF{LAT,LONG}</code> (3 d.p.)
+    <br>
+    tip: please try +-0.001 on your latitude!
+  difficulty: easy
+  categories:
+    - forensics
