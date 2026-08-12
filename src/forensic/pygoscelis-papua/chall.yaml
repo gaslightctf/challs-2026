@@ -11,7 +11,7 @@ spec:
   description: |
     The disk is at https://shorturl.at/359RO
     It will inflate to 10.0 GB, and it should be bootable.
-    Use online sources if you need help.
+    Use online resources if you need help.
   difficulty: medium
   categories:
     - forensics
