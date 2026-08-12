@@ -1,0 +1,16 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: mineguesser
+spec:
+  author: sportshead
+  flag: gaslightCTF{-3,98,726}
+  flagFormat: gaslightCTF{x,y,z}
+  description: |
+    We're tracking a rogue pillager cell who have hidden some weapons in this ruined portal's chest. Find the coordinates of the chest.
+    <br>
+    1.21.11, <code>abs(x, y, z) <= (5000, 125, 5000)</code>
+  difficulty: easy
+  categories:
+    - forensics
