@@ -13,3 +13,15 @@ spec:
   difficulty: easy
   categories:
     - web
+  containers:
+    - hostname: chall
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        env:
+          name: FLAG
+

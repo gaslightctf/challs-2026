@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, g, redirect, render_template_string, request, url_for
 
 DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portal.db")
-FLAG = os.environ.get("FLAG", "sql-1nj3ction-b4e6acb1a1159a1f8d69d766999d3af5")
+FLAG = os.environ.get("FLAG", "gaslightCTF{fake_flag}")
 
 app = Flask(__name__)
 
@@ -161,7 +161,6 @@ def close_connection(exception):
 
 
 def init_db():
-    # Fresh DB every process start.
     if os.path.exists(DATABASE):
         os.remove(DATABASE)
 
@@ -180,9 +179,6 @@ def init_db():
         "INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)",
         ("guest", "guestpass", 0),
     )
-    # Admin password is random/unknown to the player on purpose - the
-    # intended solve path is an auth-bypass injection, not guessing or
-    # cracking the password.
     db.execute(
         "INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)",
         ("admin", os.urandom(16).hex(), 1),
