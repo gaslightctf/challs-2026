@@ -10,7 +10,7 @@ spec:
   description: |
     Flag format: <code>gaslightCTF{LAT,LONG}</code> (round to 3 d.p.)
     <br>
-    tip: please try +-0.001 on your latitude!
+    tip: please try &pm;0.001 on your latitude!
   difficulty: easy
   categories:
     - forensics
