@@ -9,8 +9,8 @@ spec:
   flag: gaslightCTF{g3nt00_d1sc_5b3f40ab6dcc22dee401517d6c356250}
   flagFormat: gaslightCTF{...}
   description: |
-    The disk is at https://shorturl.at/359RO
-    It will inflate to 10.0 GB, and it should be bootable.
+    The disk is at <a href="https://shorturl.at/359RO">https://shorturl.at/359RO</a> <br>
+    It will inflate to 10.0 GB, and it should be bootable. <br>
     Use online resources if you need help.
   difficulty: medium
   categories:
