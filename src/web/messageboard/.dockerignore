@@ -1,0 +1,47 @@
+# dependencies (bun install)
+**/node_modules
+
+# build output (built inside the image by build.ts)
+**/dist
+**/out
+**/*.tgz
+
+# code coverage
+**/coverage
+**/*.lcov
+
+# logs
+**/logs
+**/*.log
+**/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# dotenv environment variable files
+**/.env
+**/.env.*
+
+# caches
+**/.eslintcache
+**/.cache
+**/*.tsbuildinfo
+
+# editors / OS
+**/.idea
+**/.vscode
+**/.DS_Store
+
+# git
+**/.git
+**/.gitignore
+**/.gitattributes
+
+# agent/tooling config & docs
+**/.claude
+**/CLAUDE.md
+**/README.md
+
+# challenge packaging — not part of the image
+handout
+chall.yaml
+compose.yaml
+Dockerfile
+.dockerignore

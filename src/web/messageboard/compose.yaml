@@ -1,0 +1,13 @@
+services:
+  messageboard:
+    build: .
+    platform: linux/amd64
+    ports:
+      - "3000:3000"
+    environment:
+      FLAG: gaslightCTF{fake_flag}
+    depends_on:
+      - db
+
+  db:
+    build: ../messageboard-db

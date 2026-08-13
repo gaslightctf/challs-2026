@@ -14,6 +14,9 @@ if (chall.spec.containers) {
 	for (const ctr of chall.spec.containers) {
 		if (ctr.image === "CHALLENGE_IMAGE") {
 			ctr.image = `${CONTAINER_REGISTRY}/${CHALL_NAME}:${process.env.targetEnv}`;
+		} else if (ctr.image.startsWith("CHALLENGE_IMAGE_")) {
+			const challName = ctr.image.slice("CHALLENGE_IMAGE_".length);
+			ctr.image = `${CONTAINER_REGISTRY}/${challName}:${process.env.targetEnv}`;
 		}
 	}
 }
