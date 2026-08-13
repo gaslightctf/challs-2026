@@ -7,6 +7,7 @@
         let
           challs =
             import ./_helpers/getChallenges.nix self
+            |> builtins.filter ({ src, ... }: builtins.pathExists "${src}/chall.yaml")
             |> map (ctx: pkgs.callPackage ./_helpers/mkChallengeYaml.nix ctx);
         in
         pkgs.symlinkJoin {
