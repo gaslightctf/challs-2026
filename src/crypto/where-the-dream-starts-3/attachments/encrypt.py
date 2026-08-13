@@ -13,6 +13,6 @@ def encrypt(pt: str, keyword: str) -> str:
     
     return ct
 
-with open('gaslight-where-the-dream-starts-2/plaintext.txt', 'r') as file:
+with open('gaslight-where-the-dream-starts-3/plaintext.txt', 'r') as file:
     ct = file.readline()
 print(encrypt(ct, "dream"))
