@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: newjeans-is-five
+spec:
+  author: william_etotheipi
+  flag: gaslightCTF{newj34ns-nv-d!es}
+  flagFormat: gaslightCTF{...}
+  displayName: NEWJEANS IS FIVE
+  description: |
+    NewJeans is not NewJeans without any one of its members. What is AES without one of its components?
+  difficulty: hard
+  categories:
+    - crypto
