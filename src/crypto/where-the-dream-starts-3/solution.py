@@ -4,6 +4,15 @@ freq = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0.002, 0.
         0.024, 0.067, 0.075, 0.019, 0.001, 0.060, 0.063, 0.091, 0.028, 0.010, 0.023, 0.001, 
         0.020, 0.001]
 
+def to_vigenere_ct(ct: str, m: int) -> str:
+    ct = list(map(lambda x: ascii_lowercase.index(x), ct))
+    for i in range(len(ct)):
+        ct[i] = (ct[i] - (i // m)) % 26
+    
+    ct = list(map(lambda x: ascii_lowercase[x], ct))
+    ct = ''.join(ct)
+    return ct
+
 def IC(text: str) -> float:
     n = len(text)
     result = 0
@@ -24,8 +33,9 @@ def combined_IC(text: str, K: int, freq: list[float]) -> float:
     
     return round(result, 6)
 
-# Friedman test by index of coincidence (IC) https://en.wikipedia.org/wiki/Vigenère_cipher#Friedman_test
+# (Modified) Friedman test by index of coincidence (IC) https://en.wikipedia.org/wiki/VigenÃ¨re_cipher#Friedman_test
 def friedman_test(ct: str, m: int) -> list[float]:
+    ct = to_vigenere_ct(ct, m)
     # divide ct into m chunks
     ct_chunks = [ct[i::m] for i in range(m)]
 
@@ -48,6 +58,7 @@ def combined_IC_test(text: str, freq: list[float]) -> list[float]:
 
 # Print most possible key values and combined IC list
 def combined_IC_attack(ct: str, m: int, freq: list[float]) -> None:
+    ct = to_vigenere_ct(ct, m)
     ct_chunks = [ct[i::m] for i in range(m)]
     for i, ct_chunk in enumerate(ct_chunks):
         temp_combined_IC_list = combined_IC_test(ct_chunk, freq)
@@ -61,7 +72,7 @@ def decrypt(ct: str, keyword: str) -> str:
 
     pt = ""
     for i in range (len(ct)):
-        index = (ct[i] - key[i % m]) % 26
+        index = (ct[i] - key[i % m] - (i // m)) % 26
         char = ascii_lowercase[index]
         pt += char
 
@@ -71,13 +82,16 @@ with open('gaslight-where-the-dream-starts-3/output.txt', 'r') as file:
     ct = file.readline()
 
 '''
-# Friedman test to work out keylength
-for m in range(1, 8):
-    print(friedman_test(ct, m))
+# Determine keylength by (modified) Friedman test
+for m in range(1, 10):
+    temp_IC_list = friedman_test(ct, m)
+    print(f"m = {m}: {temp_IC_list}")
 
-# combined IC test to work out individual key values
+# Therefore keylength m = 5
+
+# Determine keyword
 combined_IC_attack(ct, 5, freq)
-'''
 
-# decrypt with the key after attack
+# Therefore keyword is "dream"
+'''
 print(decrypt(ct, "dream"))
