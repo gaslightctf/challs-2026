@@ -1,0 +1,19 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: where-the-dream-starts-2
+spec:
+  author: william_etotheipi
+  flag: gaslightCTF{tr4nsp0s3-2-th3-k3y-0f-g-fl4t!}
+  flagFormat: gaslightCTF{...}
+  displayName: Where the dream starts 2
+  description: |
+    Musicians transpose keys regularly. Cryptanalysts transpose <a href="https://en.wikipedia.org/wiki/Transposition_cipher#Columnar_transposition">columns</a> regularly.
+    <br><br>
+    Keylength: key of cipher in Where the dream starts 1
+    <br>
+    Keyword: ascii_lowercase[:keylength]
+  difficulty: medium
+  categories:
+    - crypto
