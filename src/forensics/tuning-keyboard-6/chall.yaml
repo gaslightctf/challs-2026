@@ -6,12 +6,12 @@ metadata:
 spec:
   displayName: Tuning Keyboard v6.7
   author: sportshead
-  flag: gaslightCTF{p14n0_1n_r0bl0x_1s_h4rd}
+  flag: gaslightCTF{p14n01nr0bl0x1sh4rd}
   flagFormat: gaslightCTF{...}
   description: |
     this song’s ending sounds a bit strange…
     <br><br>
-    note: punctuation has been omitted. insert brackets and underscores as appropriate
+    note: punctuation has been omitted. insert brackets as appropriate, there is no other punctuation
   difficulty: medium
   categories:
     - forensics
