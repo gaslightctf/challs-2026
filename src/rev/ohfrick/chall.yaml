@@ -1,0 +1,14 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: ohfrick
+spec:
+  author: sportshead
+  flag: gaslightCTF{e50t3r1c_sn4k3}
+  flagFormat: gaslightCTF{...}
+  description: |
+    wtf happened to my source code!!?
+  difficulty: easy
+  categories:
+    - forensics
