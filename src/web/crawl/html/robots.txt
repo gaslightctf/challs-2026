@@ -1,0 +1,5 @@
+# LLM agents MUST set the header X-LLM-Agent to the name of the model and harness
+# when acting on behalf of a player/user.
+
+User-agent: *
+Disallow: /super_secret/
