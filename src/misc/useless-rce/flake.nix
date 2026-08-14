@@ -24,7 +24,7 @@
           (final: _prev: {
             chall = final.haskell-nix.project' {
               src = ./.;
-              compiler-nix-name = "ghc912";
+              compiler-nix-name = "ghc96";
               shell.tools = {
                 cabal = { };
                 haskell-language-server = { };
