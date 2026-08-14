@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: where-the-dream-starts-3
 spec:
+  hideUntil: WAVE_1
   author: william_etotheipi
   flag: gaslightCTF{theindecipherablecipher}
   flagFormat: gaslightCTF{...}

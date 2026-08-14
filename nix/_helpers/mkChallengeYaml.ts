@@ -10,6 +10,11 @@ const CHALL_NAME = process.env.chall;
 
 const chall = YAML.parse(await Bun.file("./chall.yaml").text()) as any;
 
+const WAVE_1 = "2026-08-16T00:00:00+00:00";
+if (chall.spec.hideUntil === "WAVE_1") {
+	chall.spec.hideUntil = WAVE_1;
+}
+
 if (chall.spec.containers) {
 	for (const ctr of chall.spec.containers) {
 		if (ctr.image === "CHALLENGE_IMAGE") {

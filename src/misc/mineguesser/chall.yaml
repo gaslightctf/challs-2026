@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: mineguesser
 spec:
+  hideUntil: WAVE_1
   author: sportshead
   flag: gaslightCTF{-3,98,726}
   flagFormat: gaslightCTF{x,y,z}

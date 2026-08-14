@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: tuning-keyboard-6
 spec:
+  hideUntil: WAVE_1
   displayName: Tuning Keyboard v6.7
   author: sportshead
   flag: gaslightCTF{p14n01nr0bl0x1sh4rd}

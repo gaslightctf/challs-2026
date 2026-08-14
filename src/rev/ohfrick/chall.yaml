@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: ohfrick
 spec:
+  hideUntil: WAVE_1
   author: sportshead
   flag: gaslightCTF{e50t3r1c_sn4k3}
   flagFormat: gaslightCTF{...}

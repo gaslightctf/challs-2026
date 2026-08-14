@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: quack
 spec:
+  hideUntil: WAVE_1
   author: sportshead
   flag: gaslightCTF{52.196,0.115}
   flagFormat: gaslightCTF{1.234,56.789}
