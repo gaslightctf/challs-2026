@@ -26,3 +26,8 @@ spec:
 
     - hostname: db
       image: CHALLENGE_IMAGE_messageboard-db
+      ports:
+        - port: 5432
+          protocol: tcp
+          appProtocol: postgresql
+          type: internalPort
