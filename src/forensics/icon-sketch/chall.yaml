@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: icon-sketch
+spec:
+  displayName: icon-sketch
+  author: riyc
+  flag: gaslightCTF{i5_th4t_supp0s3d_2b_p1ss?}
+  flagFormat: gaslightCTF{...}
+  description: |
+    the pee people found the first version of the gaslightCTF icon... apparently theres a flag in here?
+  difficulty: easy
+  categories:
+    - forensics

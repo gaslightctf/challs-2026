@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: layered-pages
+spec:
+  displayName: layered-pages
+  author: riyc
+  flag: gaslightCTF{c4rv3_1t_0ut}
+  flagFormat: gaslightCTF{...}
+  description: |
+    my desk is a mess! help me sort it out!
+  difficulty: easy
+  categories:
+    - forensics
