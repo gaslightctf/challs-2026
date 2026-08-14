@@ -70,6 +70,17 @@
             name = "useless-rce";
 
             config.Labels."org.opencontainers.image.source" = "https://github.com/gaslightctf/challs-2026";
+            config.Env =
+              let
+                locales = pkgs.glibcLocales.override {
+                  allLocales = false;
+                  locales = [ "C.UTF-8/UTF-8" ];
+                };
+              in
+              [
+                "LANG=C.UTF-8"
+                "LOCALE_ARCHIVE=${locales}/lib/locale/locale-archive"
+              ];
             config.Cmd = [
               "${pkgs.socat}/bin/socat"
               "TCP-LISTEN:1337,reuseaddr,fork"
