@@ -5,7 +5,7 @@ metadata:
   name: odyssey
 spec:
   author: sportshead
-  flag: gaslightCTF{23.724,37.974}
+  flag: gaslightCTF{37.974,23.724}
   flagFormat: gaslightCTF{1.234,56.789}
   description: |
     Do I colour grade better than Christopher Nolan?
@@ -13,4 +13,4 @@ spec:
     Flag format: <code>gaslightCTF{LAT,LONG}</code> (round to 3 d.p.)
   difficulty: easy
   categories:
-    - forensics
+    - misc
