@@ -1,5 +1,8 @@
 # solution
 
+fun fact I actually found these CVEs while making the original version of json-warehouse. \
+it was originally meant to be an sqli, but the cookie feature of elysia was soooo weird I had to take a look
+
 https://github.com/sportshead/elysia-poc (note to self, make public again after CTF)
 - CVE-2025-66457 Cookie config ACE
 - CVE-2025-66456 Prototype pollution in schema validation
