@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: ucas
 spec:
+  hideUntil: WAVE_1
   author: sportshead
   flag: gaslightCTF{m4n1f3st1ng_e4sy_0ff3r5_f0r_ev3ry0n3}
   flagFormat: gaslightCTF{...}
