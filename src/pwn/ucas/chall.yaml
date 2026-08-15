@@ -1,0 +1,25 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: ucas
+spec:
+  author: sportshead
+  flag: gaslightCTF{m4n1f3st1ng_e4sy_0ff3r5_f0r_ev3ry0n3}
+  flagFormat: gaslightCTF{...}
+  description: |
+    these uni apps are getting harder and harder every year!
+  difficulty: easy
+  categories:
+    - pwn
+  containers:
+    - hostname: chall
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        content:
+          path: /flag
