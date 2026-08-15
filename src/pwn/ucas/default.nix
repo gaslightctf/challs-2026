@@ -1,15 +1,14 @@
 {
-  callPackage,
   dockerTools,
   socat,
 }:
-let
-  # ucas = callPackage ./ucas.nix { };
-in
 dockerTools.streamLayeredImage {
   name = "ucas";
 
-  contents = [ ./handout ];
+  contents = [
+    ./handout
+    dockerTools.binSh
+  ];
 
   config.Labels."org.opencontainers.image.source" = "https://github.com/gaslightctf/challs-2026";
   config.Cmd = [
