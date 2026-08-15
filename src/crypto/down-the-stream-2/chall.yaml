@@ -1,0 +1,17 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: down-the-stream-2
+spec:
+  hideUntil: WAVE_1
+  author: william_etotheipi
+  flag: gaslightCTF{st0p-rev3al1ng-4ll-the-pl4int3xts}
+  flagFormat: gaslightCTF{...}
+  description: |
+    The author tried to be a bit more clever and this time, parts of the cipher are redacted. However, you were able to intercept a plaintext-ciphertext pair generated from the algorithm. Does this compensate for the redacted algorithm?
+    <br><br>
+    The initialization vector this time (IV) is the palindrome generated from the previous IV. e.g. if the previous IV was 2a, then the palindrome generated is 2aa2
+  difficulty: medium
+  categories:
+    - crypto
