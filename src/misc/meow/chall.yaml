@@ -1,0 +1,17 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: meow
+spec:
+  hideUntil: WAVE_1
+  author: sportshead
+  flag: gaslightCTF{37.447,25.327}
+  flagFormat: gaslightCTF{1.234,56.789}
+  description: |
+    Flag format: <code>gaslightCTF{LAT,LONG}</code> (round to 3 d.p.)
+    <br>
+    tip: please try &pm;0.001 on your longitude!
+  difficulty: easy
+  categories:
+    - misc
