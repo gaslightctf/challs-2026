@@ -1,0 +1,26 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: good-enough
+spec:
+  hideUntil: WAVE_1
+  author: sportshead
+  flag: gaslightCTF{du_b1st_gut_g3nuuuuu_uuuuu_uuug}
+  flagFormat: gaslightCTF{...}
+  description: |
+    you are good enough :)
+  difficulty: easy
+  categories:
+    - pwn
+  containers:
+    - hostname: chall
+      image: CHALLENGE_IMAGE
+      ports:
+        - port: 1337
+          protocol: tcp
+          appProtocol: tcp
+          type: publicTlsRoute
+      dynamicFlag:
+        content:
+          path: /flag
