@@ -1,5 +1,6 @@
 {
   dockerTools,
+  bashInteractive,
   toybox,
   socat,
 }:
@@ -9,7 +10,7 @@ dockerTools.streamLayeredImage {
   contents = [
     ./handout
 
-    dockerTools.binSh
+    bashInteractive
     toybox
   ];
 
