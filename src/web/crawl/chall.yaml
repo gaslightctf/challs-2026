@@ -4,6 +4,7 @@ metadata:
   namespace: berg
   name: crawl
 spec:
+  hideUntil: WAVE_1
   author: sportshead
   flag: gaslightCTF{LLM_1nduc3d_4r4chn0ph0b1a}
   flagFormat: gaslightCTF{...}
