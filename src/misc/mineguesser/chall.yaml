@@ -14,4 +14,4 @@ spec:
     1.21.11, <code>abs(x, y, z) <= (5000, 125, 5000)</code>
   difficulty: easy
   categories:
-    - forensics
+    - misc

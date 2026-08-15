@@ -10,9 +10,9 @@ spec:
   flag: gaslightCTF{p14n01nr0bl0x1sh4rd}
   flagFormat: gaslightCTF{...}
   description: |
-    this song’s ending sounds a bit strange…
+    this song's ending sounds a bit strange...
     <br><br>
-    note: punctuation has been omitted. insert brackets as appropriate, there is no other punctuation
+    note: insert brackets as appropriate, there is no other punctuation
   difficulty: medium
   categories:
-    - forensics
+    - misc
