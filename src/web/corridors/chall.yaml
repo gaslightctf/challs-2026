@@ -2,25 +2,25 @@ apiVersion: berg.norelect.ch/v1
 kind: Challenge
 metadata:
   namespace: berg
-  name: crawl
+  name: corridors
 spec:
   hideUntil: WAVE_1
   author: sportshead
-  flag: gaslightCTF{LLM_1nduc3d_4r4chn0ph0b1a}
+  flag: gaslightCTF{fr33d0m_4t_l4st}
   flagFormat: gaslightCTF{...}
   description: |
-    AI crawlers never respect the rules...
+    The path will guide you to the flag.
   difficulty: easy
   categories:
     - web
   containers:
-    - hostname: nginx
+    - hostname: corridors
       image: CHALLENGE_IMAGE
       ports:
-        - port: 80
+        - port: 3000
           protocol: tcp
           appProtocol: http
           type: publicHttpRoute
       dynamicFlag:
-        content:
-          path: /www/super_secret/_flag.txt
+        env:
+          name: FLAG
