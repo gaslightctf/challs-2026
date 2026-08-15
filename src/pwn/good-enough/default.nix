@@ -19,4 +19,7 @@ dockerTools.streamLayeredImage {
     "TCP-LISTEN:1337,reuseaddr,fork"
     "EXEC:\"/good-enough\",pty,rawer,echo=0"
   ];
+  config.Env = [
+    "PATH=/bin"
+  ];
 }
