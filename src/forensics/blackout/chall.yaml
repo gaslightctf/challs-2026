@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: blackout
+spec:
+  hideUntil: WAVE_1
+  author: riyc
+  flag: gaslightCTF{c0w4bung4_f1le_4ev3r}
+  flagFormat: gaslightCTF{...}
+  description: |
+    i was doing my work, then my power went off! my computer spat this out afterwards, can you recover the flag?
+  difficulty: easy
+  categories:
+    - forensics
