@@ -1,0 +1,15 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: no-info
+spec:
+  hideUntil: WAVE_1
+  author: william_etotheipi
+  flag: gaslightCTF{0b5cur1ty-41nt-n0t-s3curity}
+  flagFormat: gaslightCTF{...}
+  description: |
+    <a href="https://en.wikipedia.org/wiki/Security_through_obscurity#Criticism">hint</a>
+  difficulty: easy
+  categories:
+    - crypto
