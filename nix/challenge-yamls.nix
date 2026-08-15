@@ -39,6 +39,10 @@
           git ls-files -z | xargs -0 rm -f
           cp -L "${self'.packages.challenge-yamls}"/* .
 
+          if [ "$TARGET_ENV" = "prod" ]; then
+            sed -i 's|https://pantry-dev\.gaslightctf\.cooking|https://pantry.gaslightctf.cooking|g' ./*.yaml
+          fi
+
           git add .
           if ! git diff --cached --quiet; then
             git commit -m "Update to $NIX_CI_GIT_COMMIT_SHA ($NIX_CI_GIT_BRANCH)"
