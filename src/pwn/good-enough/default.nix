@@ -1,5 +1,6 @@
 {
   dockerTools,
+  toybox,
   socat,
 }:
 dockerTools.streamLayeredImage {
@@ -7,7 +8,9 @@ dockerTools.streamLayeredImage {
 
   contents = [
     ./handout
+
     dockerTools.binSh
+    toybox
   ];
 
   config.Labels."org.opencontainers.image.source" = "https://github.com/gaslightctf/challs-2026";
