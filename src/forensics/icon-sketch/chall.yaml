@@ -4,7 +4,7 @@ metadata:
   namespace: berg
   name: icon-sketch
 spec:
-  displayName: icon-sketch
+  hideUntil: WAVE_1
   author: riyc
   flag: gaslightCTF{i5_th4t_supp0s3d_2b_p1ss?}
   flagFormat: gaslightCTF{...}

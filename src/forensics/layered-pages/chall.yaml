@@ -4,7 +4,7 @@ metadata:
   namespace: berg
   name: layered-pages
 spec:
-  displayName: layered-pages
+  hideUntil: WAVE_1
   author: riyc
   flag: gaslightCTF{c4rv3_1t_0ut}
   flagFormat: gaslightCTF{...}
