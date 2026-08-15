@@ -13,7 +13,7 @@ let
     ln -s ${bashInteractive}/bin/bash $out/bin/bash
     cat > $out/bin/sh <<'EOF'
     #!${bashInteractive}/bin/bash
-    export PATH="''${PATH:-/bin}"
+    export PATH="$PATH:/bin"
     export HOME="''${HOME:-/}"
     export TERM="''${TERM:-xterm}"
     if [ "$#" -eq 0 ]; then
