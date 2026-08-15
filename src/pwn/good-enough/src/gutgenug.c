@@ -5,8 +5,11 @@
 extern char *gets(char *s);
 
 int main() {
+    setbuf(stdin, NULL);
+    setbuf(stdout, NULL);
+
     char buf[16];
-    printf("[%p] du bist? ", buf);
+    printf("[%p] du bist? ", main);
 
     gets(buf);
     if (strncmp(buf, "gut genug", 9)) {
