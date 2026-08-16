@@ -1,0 +1,16 @@
+apiVersion: berg.norelect.ch/v1
+kind: Challenge
+metadata:
+  namespace: berg
+  name: feedback
+spec:
+  hideUntil: 2026-08-17T06:00:00+00:00
+  author: sportshead
+  flag: gaslightCTF{th4nk5_f0r_play1ng_g4sl1ghtCTF!!_6f4204f4}
+  flagFormat: gaslightCTF{...}
+  description: |
+    We hope you enjoyed the competition! <br>
+    <a href="https://forms.gle/CbsvzGoCjPAyBHMD9" target="_blank">Feedback form</a>
+  difficulty: easy
+  categories:
+    - misc
