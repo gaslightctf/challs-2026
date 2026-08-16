@@ -3,4 +3,4 @@ WORKDIR /usr/src/app
 
 COPY index.js /
 
-CMD ["bun" "run" "/index.js"]
+CMD ["bun", "run", "/index.js"]
