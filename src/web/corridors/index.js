@@ -14,8 +14,6 @@ for (let i = 0; i < flag.length; i++) {
 }
 solution += "/";
 
-console.log(solution);
-
 const freedom = `
 <!DOCTYPE html>
 <html lang="en">
