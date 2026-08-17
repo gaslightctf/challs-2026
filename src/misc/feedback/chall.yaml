@@ -4,7 +4,7 @@ metadata:
   namespace: berg
   name: feedback
 spec:
-  hideUntil: 2026-08-17T06:00:00+00:00
+  hideUntil: 2029-08-17T06:00:00+00:00
   author: sportshead
   flag: gaslightCTF{th4nk5_f0r_play1ng_g4sl1ghtCTF!!_6f4204f4}
   flagFormat: gaslightCTF{...}
